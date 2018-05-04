@@ -27,20 +27,25 @@ th {
         <th>Image</th>
         <th>Type</th>
         <th>Title</th>
+        <th>Star Rating</th>
         <th>Serving Size</th>
         <th>Ready Time</th>
-        <th>Star Rating</th>
+        <th>Difficulty Rating</th>
     </tr>
     <tr *ngFor = 'let recipe of filteredRecipes'>
         <td>
-            <img src='{{ recipe.imageURL }}' alt='' height='115' width='100'>
+            <img src='{{ recipe.imageURL }}' alt='' height='215' width='190'>
         </td>
         <td>{{ recipe.type }}</td>
         <td>{{ recipe.title }}</td>
+        <td><app-star
+            [rating]='recipe.starRating'
+            (ratingClicked)='onRatingClicked($event)'>
+        </app-star></td>
         <td>{{ recipe.servingSize }}</td>
         <td>{{ recipe.readyTime }} minutes</td>
         <td><app-star
-            [rating]='recipe.starRating'
+            [rating]='recipe.difficulyRating'
             (ratingClicked)='onRatingClicked($event)'>
         </app-star></td>
     </tr>
