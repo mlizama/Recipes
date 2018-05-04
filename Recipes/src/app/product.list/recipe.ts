@@ -6,4 +6,6 @@ export interface IRecipe {
     difficulyRating: number;
     starRating: number;
     imageURL: string;
+    ingredients: string;
+    directions: string;
 }
