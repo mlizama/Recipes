@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product.list/product.list.component';
 import { StarComponent } from './star/star.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { StarComponent } from './star/star.component';
     AppComponent,
     HomeComponent,
     ProductListComponent,
-    StarComponent
+    StarComponent,
+    RecipesComponent,
+    RecipeDetailComponent,
+    AddRecipeComponent
   ],
   imports: [
     BrowserModule,
