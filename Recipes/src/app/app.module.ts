@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LoadProductsService } from './product.list/load.products.service';
 
@@ -27,7 +27,12 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: 'home', component: HomeComponent }
+      { path: 'home', component: HomeComponent },
+      { path: 'recipes', component: RecipesComponent },
+      { path: 'recipedetail/:name', component: RecipeDetailComponent},
+      { path: 'addrecipe', component:AddRecipeComponent},
+      { path: '', redirectTo: '/home', pathMatch: 'full'
+  }
     ])
   ],
   providers: [LoadProductsService],
