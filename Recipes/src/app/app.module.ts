@@ -29,7 +29,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'recipes', component: RecipesComponent },
-      { path: 'recipedetail/:name', component: RecipeDetailComponent},
+      { path: 'recipe-detail/:id', component: RecipeDetailComponent},
       { path: 'addrecipe', component:AddRecipeComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full'
   }
