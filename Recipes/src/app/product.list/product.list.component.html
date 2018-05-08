@@ -34,10 +34,10 @@ th {
     </tr>
     <tr *ngFor = 'let recipe of filteredRecipes'>
         <td>
-            <img src='{{ recipe.imageURL }}' alt='' height='215' width='190'>
+            <img src='{{ recipe.imageURL }}' alt='' height='175' width='190'>
         </td>
         <td>{{ recipe.type }}</td>
-        <td>{{ recipe.title }}</td>
+        <td><a [routerLink]="['/recipe-detail', recipe.title]">{{ recipe.title }}</a></td>
         <td><app-star
             [rating]='recipe.starRating'
             (ratingClicked)='onRatingClicked($event)'>
