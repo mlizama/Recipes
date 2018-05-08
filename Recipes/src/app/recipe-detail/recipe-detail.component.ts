@@ -123,7 +123,7 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    let id = this._activatedRoute.snapshot.paramMap.get('title');
+    let id = this._activatedRoute.snapshot.paramMap.get('id');
     this.recipe = this.recipes.find(m => m.title === id);
     console.log("id = " + id);
   }
