@@ -5,44 +5,35 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <script src="/socket.io/socket.io.js"></script>
 
-<div class="container">
-    <br>
-    <div class="jumbotron">
-        <h1 class="display-4">Send Message</h1>
+
+
+<body>
+    <div class="container">
         <br>
-        <input id="name" class="form-control" placeholder="Name">
-        <br>
-        <textarea id="message" class="form-control" placeholder="Message"></textarea>
-        <br>
-        <button id="send" class="btn btn-success">Send</button>
+        <div class ="jumbotron">
+            <h1 class = "display-4">Add Recipe</h1>
+            <br>
+            <input id = "title" class="form-control" placeholder="Title" [(ngModel)]='title'>
+            <br>
+            <input id = "type" class="form-control" placeholder="Type" [(ngModel)]='type'>
+            <br>
+            <input id = "ServingSize" class="form-control" placeholder="serving size" [(ngModel)]='servingSize'>
+            <br>
+            <input id = "readyTime" class="form-control" placeholder="Ready time in minutes" [(ngModel)]='readyTime'>
+            <br>
+            <input id = "difficultyRating" class="form-control" placeholder="Difficulty rating 1-5" [(ngModel)]='difficultyRating'>
+            <br>
+            <input id = "starRating" class="form-control" placeholder="Rating 1-5" [(ngModel)]='starRating'>
+            <br>
+            <input id = "imageURL" class="form-control" placeholder="image url" [(ngModel)]='imageURL'>
+            <br>
+            <input id = "ingredients" class="form-control" placeholder="Type in all ingredients" [(ngModel)]='ingredients'>
+            <br>
+            <input id = "directions" class="form-control" placeholder="Directions" [(ngModel)]='directions'>
+            <br>
+            <button class ="btn btn-success" id="send" (click) = "onAddRecipe()">send</button>
+            <br>
+        </div>
     </div>
-    <div id="messages">
-
-    </div>
-</div>
-<script>
-    var socket = io()
-    $(() => {
-        $("#send").click(()=>{
-            var message = { name: $("#name").val(), message: $("#message").val()}
-            postMessage(message)
-        })
-        getMessages()
-    })
-
-    socket.on('message', addMessage)
-
-    function addMessage(message){
-        $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
-    }
-
-    function getMessages() {
-        $.get('http://localhost:3000/messages', (data) => {
-            data.forEach(addMessage);
-        })
-    }
-
-    function postMessage(message) {
-        $.post('http://localhost:3000/messages', message)
-    }
-</script>
+        
+</body>

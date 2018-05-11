@@ -11,7 +11,10 @@ import { StarComponent } from './star/star.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-
+import { SaverecipeService } from './saverecipe.service';
+import { GetrecipesService } from './getrecipes.service';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    HttpModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'recipes', component: RecipesComponent },
@@ -35,7 +40,7 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
   }
     ])
   ],
-  providers: [LoadProductsService],
+  providers: [LoadProductsService,SaverecipeService,GetrecipesService,HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
