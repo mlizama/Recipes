@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecipeDetailComponent implements OnInit {
   recipe;
+  directions: String;
+  ingredients: String;
   recipes = [
       {
         "type": "Breakfast",
@@ -124,6 +126,9 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit() {
     let id = this._activatedRoute.snapshot.paramMap.get('id');
+    this.ingredients = this._activatedRoute.snapshot.paramMap.get('ingredients');
+    this.directions = this._activatedRoute.snapshot.paramMap.get('directions');
+
     this.recipe = this.recipes.find(m => m.title === id);
     console.log("id = " + id);
   }

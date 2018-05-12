@@ -34,7 +34,7 @@ import {HttpModule} from '@angular/http';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'recipes', component: RecipesComponent },
-      { path: 'recipe-detail/:id', component: RecipeDetailComponent},
+      { path: 'recipe-detail/:id/:ingredients/:directions', component: RecipeDetailComponent},
       { path: 'addrecipe', component:AddRecipeComponent},
       { path: '', redirectTo: '/home', pathMatch: 'full'
   }

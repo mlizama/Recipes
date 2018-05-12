@@ -6,12 +6,11 @@
 <script src="/socket.io/socket.io.js"></script>
 
 
-
 <body>
     <div class="container">
         <br>
         <div class ="jumbotron">
-            <h1 class = "display-4">Add Recipe</h1>
+            <h1 class = "display-4" align = "middle">Add Recipe</h1>
             <br>
             <input id = "title" class="form-control" placeholder="Title" [(ngModel)]='title'>
             <br>
@@ -21,7 +20,7 @@
             <br>
             <input id = "readyTime" class="form-control" placeholder="Ready time in minutes" [(ngModel)]='readyTime'>
             <br>
-            <input id = "difficultyRating" class="form-control" placeholder="Difficulty rating 1-5" [(ngModel)]='difficultyRating'>
+            <input id = "difficulyRating" class="form-control" placeholder="Difficulty rating 1-5" [(ngModel)]='difficulyRating'>
             <br>
             <input id = "starRating" class="form-control" placeholder="Rating 1-5" [(ngModel)]='starRating'>
             <br>

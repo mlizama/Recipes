@@ -37,7 +37,7 @@ th {
             <img src='{{ recipe.imageURL }}' alt='' height='175' width='190'>
         </td>
         <td>{{ recipe.type }}</td>
-        <td><a [routerLink]="['/recipe-detail', recipe.title]">{{ recipe.title }}</a></td>
+        <td><a [routerLink]="['/recipe-detail', recipe.title,recipe.ingredients,recipe.directions]">{{ recipe.title }}</a></td>
         <td><app-star
             [rating]='recipe.starRating'
             (ratingClicked)='onRatingClicked($event)'>

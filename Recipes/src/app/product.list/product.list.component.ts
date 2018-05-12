@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadProductsService } from './load.products.service';
 import { IRecipe } from './recipe';
+import { Recipe } from '../Recipe'
 
 @Component({
   selector: 'product-list',
@@ -17,14 +18,27 @@ export class ProductListComponent implements OnInit {
     this.filteredRecipes = this.filterRecipes(this.listFilter);
   }
 
-  recipes: IRecipe[];
-  filteredRecipes: IRecipe[];
+  recipes: Recipe[];
+  response: Recipe[];
+  filteredRecipes: Recipe[];
 
   constructor(private _loadProductsService: LoadProductsService) {
   }
 
   ngOnInit() {
       this.recipes = this._loadProductsService.getProducts('../../assets/recipes.json');
+      let xhr = new XMLHttpRequest();
+      let url = "http://localhost:3000/messages";
+      xhr.open("GET", url,true);
+      xhr.send();
+  
+      xhr.addEventListener("load", () => {
+        this.response = JSON.parse(xhr.responseText);
+        this.recipes = this.recipes.concat(this.response);
+        this.filteredRecipes = this.recipes;
+        console.log(this.recipes);
+      });
+  
       this.filteredRecipes = this.recipes; //Used for setting data members
   }
 
@@ -32,8 +46,8 @@ export class ProductListComponent implements OnInit {
     console.log(e);
   }
 
-  filterRecipes(filter:string): IRecipe[] {
-    return this.recipes.filter((m: IRecipe) =>
+  filterRecipes(filter:string): Recipe[] {
+    return this.recipes.filter((m: Recipe) =>
       m.title.indexOf(filter) !== -1
     );
   }

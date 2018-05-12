@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SaverecipeService } from '../saverecipe.service';
+import { GetrecipesService } from '../getrecipes.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { Recipe } from '../Recipe'
 
 
 @Component({
@@ -19,11 +23,33 @@ export class AddRecipeComponent implements OnInit {
   ingredients
   directions
 
+  readonly ROOT_URL = 'http://localhost:3000/messages'
+  posts: any;
+  recipes: Recipe[];
+
+
+
   constructor(    
-    private saveRecipeService: SaverecipeService
+    private saveRecipeService: SaverecipeService,
+    private getRecipeService: GetrecipesService,
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", this.ROOT_URL,true);
+    xhr.send();
+
+    xhr.addEventListener("load", () => {
+      this.recipes = JSON.parse(xhr.responseText);
+      console.log(this.recipes)  
+    });
+
+  }
+
+  getRecipes(){
+    this.posts = this.http.get(this.ROOT_URL)
+    console.log(this.posts)
   }
 
   clearForm(){
